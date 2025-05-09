@@ -1,8 +1,22 @@
 const mongoose = require('mongoose');
-const musicMetadata = require('music-metadata'); // Library for extracting audio metadata
-const path = require('path'); // To handle file paths
-const fs = require('fs/promises'); // File system module for promises
+const axios = require('axios');
+const fs = require('fs');
+const tmp = require('tmp');
+const { getAudioDurationInSeconds } = require('get-audio-duration');
 
+// Helper functions
+const convertToSeconds = (duration) => {
+  const [minutes, seconds] = duration.split(':').map(Number);
+  return minutes * 60 + seconds;
+};
+
+const formatDuration = (seconds) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? '0' + secs : secs}`;
+};
+
+// Song schema
 const SongSchema = new mongoose.Schema({
   name: { type: String, required: true },
   artist: { type: String, required: true },
@@ -11,48 +25,90 @@ const SongSchema = new mongoose.Schema({
   albumId: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' },
   releaseDate: { type: Date, required: true },
   rating: { type: Number, default: 0, min: 0, max: 5 },
-  duration: { type: Number }, // Duration in seconds
+  duration: { type: String, default: '0:00' },
+  durationInSeconds: { type: Number, default: 0 }
 });
 
-// Middleware to calculate and set duration before saving the song
+// Pre-save hook to calculate duration
 SongSchema.pre('save', async function (next) {
+  if (!this.isModified('audioUrl') || this.durationInSeconds > 0) return next();
+
   try {
-    if (this.audioUrl && !this.duration) {
-      const audioFilePath = path.join(__dirname, '..', this.audioUrl);
+    const tmpFile = tmp.fileSync({ postfix: '.mp3' });
+    const writer = fs.createWriteStream(tmpFile.name);
 
-      // Check if the file exists
-      await fs.access(audioFilePath);
+    const response = await axios({
+      method: 'get',
+      url: this.audioUrl,
+      responseType: 'stream',
+    });
 
-      // Use musicMetadata to extract metadata
-      const metadata = await musicMetadata.parseFile(audioFilePath);
+    await new Promise((resolve, reject) => {
+      response.data.pipe(writer);
+      writer.on('finish', resolve);
+      writer.on('error', reject);
+    });
 
-      // Set duration in seconds
-      if (metadata.format && metadata.format.duration) {
-        this.duration = Math.round(metadata.format.duration); // Round to the nearest second
-      }
-    }
+    const seconds = await getAudioDurationInSeconds(tmpFile.name);
+    this.durationInSeconds = Math.floor(seconds);
+    this.duration = formatDuration(seconds);
 
+    tmpFile.removeCallback();
     next();
   } catch (error) {
-    console.error('Error calculating song duration:', error);
-    next(error);
+    console.error('Error calculating audio duration:', error);
+    next();
   }
 });
 
-// Middleware to update the album's total duration after saving a song
+// Post-save hook to update album
 SongSchema.post('save', async function () {
-  if (this.albumId) {
-    try {
-      const Album = mongoose.model('Album');
-      const album = await Album.findById(this.albumId);
+  if (!this.albumId) return;
 
-      if (album) {
-        // Trigger recalculation of the album's total duration
-        await album.save();
-      }
-    } catch (error) {
-      console.error('Error updating album total duration:', error);
+  try {
+    const Album = mongoose.model('Album');
+    const album = await Album.findById(this.albumId).populate('songs');
+
+    if (!album) return;
+
+    if (!album.songs.some(song => song._id.equals(this._id))) {
+      album.songs.push(this._id);
     }
+
+    // Total duration and average rating
+    const totalSeconds = album.songs.reduce((sum, song) => sum + (song.durationInSeconds || convertToSeconds(song.duration)), 0);
+    const totalRatings = album.songs.reduce((sum, song) => sum + (song.rating || 0), 0);
+
+    album.totalDuration = totalSeconds;
+    album.averageRating = album.songs.length > 0 ? totalRatings / album.songs.length : 0;
+
+    await album.save();
+  } catch (error) {
+    console.error('Error updating album:', error);
+  }
+});
+
+// Post-remove hook to update album
+SongSchema.post('remove', async function () {
+  if (!this.albumId) return;
+
+  try {
+    const Album = mongoose.model('Album');
+    const album = await Album.findById(this.albumId).populate('songs');
+
+    if (!album) return;
+
+    album.songs = album.songs.filter(song => !song._id.equals(this._id));
+
+    const totalSeconds = album.songs.reduce((sum, song) => sum + (song.durationInSeconds || convertToSeconds(song.duration)), 0);
+    const totalRatings = album.songs.reduce((sum, song) => sum + (song.rating || 0), 0);
+
+    album.totalDuration = totalSeconds;
+    album.averageRating = album.songs.length > 0 ? totalRatings / album.songs.length : 0;
+
+    await album.save();
+  } catch (error) {
+    console.error('Error updating album after song removal:', error);
   }
 });
 

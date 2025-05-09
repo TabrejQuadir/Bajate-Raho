@@ -3,22 +3,18 @@ const Category = require('../models/CategorySchema');
 
 exports.createAlbum = async (req, res) => {
   try {
-    const { name, backgroundColor, image, description, categoryName } = req.body;
-    console.log(req.body);
+    const { name, backgroundColor, description, categoryName } = req.body;
 
     // Initialize album data with required fields
     const albumData = {
       name,
       description,
+      backgroundColor: backgroundColor || '#000000', // Default black if not provided
     };
 
-    // Add optional fields if provided in the request body
-    if (backgroundColor) albumData.backgroundColor = backgroundColor;
-    if (image) albumData.image = image; // Image path if provided directly
-
-    // If an image is uploaded, use the file path from the upload
+    // Add Cloudinary image URL if image was uploaded
     if (req.file) {
-      albumData.image = `/uploads/images/${req.file.filename}`;
+      albumData.image = req.file.path;
     }
 
     // Check if category exists or create a new one
@@ -35,13 +31,23 @@ exports.createAlbum = async (req, res) => {
     const album = new Album(albumData);
     await album.save();
 
+    // Return populated album data
+    const populatedAlbum = await Album.findById(album._id)
+      .populate('category')
+      .populate('songs');
+
     res.status(201).json({
+      success: true,
       message: 'Album created successfully!',
-      album,
+      album: populatedAlbum
     });
   } catch (error) {
     console.error('Error creating album:', error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ 
+      success: false,
+      message: 'Error creating album',
+      error: error.message 
+    });
   }
 };
 
@@ -72,4 +78,3 @@ exports.getAlbumById = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
-

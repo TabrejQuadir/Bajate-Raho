@@ -54,6 +54,9 @@ const AlbumPage = () => {
           }
         }
 
+        console.log(currentSong);
+
+
         // If not found as playlist or unauthorized, try as album
         const albumResponse = await axios.get(`${baseUrl}/api/albums/${albumId}`, config);
         const fetchedAlbum = albumResponse.data;
@@ -84,7 +87,7 @@ const AlbumPage = () => {
       setIsModalOpen(true);
       return;
     }
-    setCurrentSong(song);
+    setCurrentSong(song.song);
   };
 
   const handleCloseModal = () => setIsModalOpen(false);
@@ -124,13 +127,13 @@ const AlbumPage = () => {
   };
 
   return (
-    <div className="h-screen bg-inherit ">
+    <div className="h-screen bg-inherit">
       {/* Album Banner */}
-      <div className="w-full relative h-auto md:h-[280px] px-4 md:px-8 border-b border-teal-700 flex flex-col md:flex-row items-start md:items-center gap-4 py-4 md:py-0">
+      <div className="w-full relative h-auto md:h-[280px] px-4 md:px-8 border-b border-teal-700 flex flex-col md:flex-row items-start md:items-center gap-4 py-4 md:py-0 overflow-x-hidden">
         {/* Album Image or Color Block */}
         {album.image ? (
           <img
-            src={`${baseUrl}${album.image}`}
+            src={`${album.image}`}
             alt={album.name}
             className="w-40 h-40 md:w-60 md:h-60 rounded object-cover"
           />
@@ -173,9 +176,9 @@ const AlbumPage = () => {
               </span>
             </div>
             <div className="flex items-center">
-            <span className="text-green-400 font-extrabold text-lg md:text-xl"><FaClock /></span>
+              <span className="text-green-400 font-extrabold text-lg md:text-xl"><FaClock /></span>
               <span className="text-white ml-1 md:ml-2 font-semibold text-xs md:text-base">
-              about {formatDuration(album.totalDuration)} min
+                about {formatDuration(album.totalDuration)} min
               </span>
             </div>
           </div>
@@ -184,64 +187,74 @@ const AlbumPage = () => {
 
 
       {/* Songs Section */}
+      {/* Songs Section */}
       <div className="my-8 px-2">
         <i className="fas fa-play-circle text-3xl  mb-6 text-green-400"></i>
 
-        {/* Table Header */}
-        <div className="grid grid-cols-3 gap-4 text-gray-300 mb-4 border-b pb-4 border-b-gray-700 text-xs md:text-base lg:text-lg">
-          <div className="flex items-center">
-            <i className="fas fa-music mr-2"></i>
-            <span className="font-semibold">Title</span>
-          </div>
-          <div className="flex items-center">
-            <i className="fas fa-user mr-2"></i>
-            <span className="font-semibold">Artist</span>
-          </div>
-          <div className="flex items-center">
-            <i className="fas fa-clock mr-2"></i>
-            <span className="font-semibold">Duration</span>
-          </div>
-        </div>
+        {/* Scrollable Container with Fixed Header */}
+        <div className="relative max-h-[400px] overflow-y-auto border border-black rounded-lg shadow-inner">
 
-        {/* Song Details */}
-        <div className="space-y-6">
-          {songs.map((song, index) => (
-            <div
-              key={index}
-              onClick={() => handleSongClick(song)}
-              className={`rounded-lg shadow-lg p-4 cursor-pointer transition-all ${currentSong === song ? 'bg-green-700 text-white md:text-base ' : 'hover:bg-green-400 hover:text-white md:text-base'
-                }`}
-            >
-
-              <div className="grid grid-cols-3 gap-4 text-xs md:text-base">
-                {/* Song Title */}
-                <div className="flex items-center">
-                  <p className="mr-3">{index + 1}</p>
-                  <img className="h-10 rounded-lg mr-3" src={`${baseUrl}${song.image}`} alt={song.name} />
-                  <span className="font-medium ">{song.name}</span>
-                </div>
-
-                {/* Artist */}
-                <div className="flex items-center">
-                  <span>{song.artist}</span>
-                </div>
-
-                {/* Duration */}
-                <div className="flex items-center">
-                  <span className="ml-8">{formatDuration(song.duration)}</span>
-                  <button
-                    onClick={(e) => handleAddToPlaylist(e, song)}
-                    className="ml-4 p-2 hover:bg-[#3e3e3e] rounded-full"
-                  >
-                    <FiMoreHorizontal className="w-5 h-5 text-white hover:text-green-400" />
-                  </button>
-                </div>
-
-              </div>
+          {/* Table Header - Sticky */}
+          <div className="grid grid-cols-3 gap-4 text-gray-300  text-xs md:text-base lg:text-lg bg-[#121212] sticky top-0  py-4 px-2">
+            <div className="flex items-center">
+              <i className="fas fa-music mr-2"></i>
+              <span className="font-semibold">Title</span>
             </div>
-          ))}
+            <div className="flex items-center">
+              <i className="fas fa-user mr-2"></i>
+              <span className="font-semibold">Artist</span>
+            </div>
+            <div className="flex items-center">
+              <i className="fas fa-clock mr-2"></i>
+              <span className="font-semibold">Duration</span>
+            </div>
+          </div>
+
+          {/* Song Details */}
+          <div className="space-y-6 px-2 py-4">
+            {songs.map((song, index) => (
+              <div
+                key={index}
+                onClick={() => handleSongClick(song)}
+                className={`rounded-lg shadow p-4 cursor-pointer transition-all ${currentSong === song
+                  ? 'bg-green-700 text-white'
+                  : 'hover:bg-green-400 hover:text-white'
+                  }`}
+              >
+                <div className="grid grid-cols-3 gap-4 text-xs md:text-base">
+                  {/* Song Title */}
+                  <div className="flex items-center">
+                    <p className="mr-3">{index + 1}</p>
+                    <img
+                      className="h-10 rounded-lg mr-3"
+                      src={`${song.song.image}`}
+                      alt={song.name}
+                    />
+                    <span className="font-medium">{song.song.name}</span>
+                  </div>
+
+                  {/* Artist */}
+                  <div className="flex items-center">
+                    <span>{song.song.artist}</span>
+                  </div>
+
+                  {/* Duration */}
+                  <div className="flex items-center">
+                    <span className="ml-8">{song.song.duration}</span>
+                    <button
+                      onClick={(e) => handleAddToPlaylist(e, song)}
+                      className="ml-4 p-2 hover:bg-[#3e3e3e] rounded-full"
+                    >
+                      <FiMoreHorizontal className="w-5 h-5 text-white hover:text-green-400" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
       {/* Add to Playlist Modal */}
       <PlaylistModal
         isOpen={isPlaylistModalOpen}

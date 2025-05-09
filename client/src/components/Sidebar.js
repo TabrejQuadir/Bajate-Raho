@@ -118,7 +118,7 @@ const Sidebar = () => {
                   <div className="w-12 h-12 shrink-0 rounded-2xl overflow-hidden relative z-10">
                     {playlist.image ? (
                       <img
-                        src={`http://localhost:5000${playlist.image}`}
+                        src={`${playlist.image}`}
                         alt={playlist.name}
                         className="w-full h-full object-contain"
                       />

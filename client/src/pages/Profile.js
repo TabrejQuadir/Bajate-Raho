@@ -216,8 +216,8 @@ function Profile() {
           <div
             onClick={() => setActiveTab('playlists')}
             className={`cursor-pointer bg-gradient-to-br ${activeTab === 'playlists'
-                ? 'from-[#23272e] to-[#1A202C] ring-2 ring-green-500/30'
-                : 'from-[#282828] to-[#1f1f1f] hover:from-[#23272e] hover:to-[#1A202C]'
+              ? 'from-[#23272e] to-[#1A202C] ring-2 ring-green-500/30'
+              : 'from-[#282828] to-[#1f1f1f] hover:from-[#23272e] hover:to-[#1A202C]'
               } transition-all duration-300 p-4 md:p-8 rounded-xl md:rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 group relative overflow-hidden`}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
@@ -242,8 +242,8 @@ function Profile() {
           <div
             onClick={() => setActiveTab('liked')}
             className={`cursor-pointer bg-gradient-to-br ${activeTab === 'liked'
-                ? 'from-[#23272e] to-[#1A202C] ring-2 ring-pink-500/30'
-                : 'from-[#282828] to-[#1f1f1f] hover:from-[#23272e] hover:to-[#1A202C]'
+              ? 'from-[#23272e] to-[#1A202C] ring-2 ring-pink-500/30'
+              : 'from-[#282828] to-[#1f1f1f] hover:from-[#23272e] hover:to-[#1A202C]'
               } transition-all duration-300 p-4 md:p-8 rounded-xl md:rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 group relative overflow-hidden`}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
@@ -315,7 +315,7 @@ function Profile() {
                     <div className="aspect-square mb-2 sm:mb-3 md:mb-4 rounded-xl sm:rounded-2xl bg-[#3c3c3c] overflow-hidden">
                       {playlist.image ? (
                         <img
-                          src={`http://localhost:5000${playlist.image}`}
+                          src={`${playlist.image}`}
                           alt={playlist.name}
                           className="w-full h-full object-cover"
                         />

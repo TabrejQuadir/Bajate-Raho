@@ -21,6 +21,9 @@ const Player = () => {
   const [showMessage, setShowMessage] = useState(false);
   const baseUrl = "http://localhost:5000"; // API base URL
 
+  console.log(currentSong);
+
+
   // Reset duration and current time when currentSong changes
   useEffect(() => {
     if (!currentSong) {
@@ -36,7 +39,7 @@ const Player = () => {
   // Set up the audio player when a song is selected
   useEffect(() => {
     if (currentSong) {
-      const newAudio = new Audio(`${baseUrl}${currentSong.audioUrl}`); // Set the audio URL
+      const newAudio = new Audio(`${currentSong.audioUrl}`); // Set the audio URL
       setAudio(newAudio);
 
       newAudio.onloadedmetadata = () => {
@@ -133,7 +136,7 @@ const Player = () => {
               <>
                 {currentSong.image ? (
                   <img
-                    src={`${baseUrl}${currentSong.image}`}
+                    src={`${currentSong.image}`}
                     alt="Album Art"
                     className={`rounded-lg ${isPlayerExpanded
                       ? "w-48 h-36 md:w-80 md:h-60"

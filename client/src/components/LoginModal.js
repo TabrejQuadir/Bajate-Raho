@@ -5,8 +5,9 @@ import '../index.css';
 
 const LoginModal = ({ isOpen, onClose, song, onRegister, onLogin }) => {
   const baseUrl = "http://localhost:5000";
+  console.log(song?.song?.image)
 
-  const songImage = song?.image ? `${baseUrl}${song.image}` : "/path/to/default-image.jpg";
+  const songImage = song?.song?.image || "/path/to/default-image.jpg";
   const navigate = useNavigate();
 
   const handleRegister = () => {

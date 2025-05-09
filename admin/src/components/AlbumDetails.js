@@ -63,6 +63,7 @@ const AlbumDetails = () => {
   };
 
 
+
   return (
     <div className="h-fit min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white">
       {/* Back Button */}
@@ -80,7 +81,7 @@ const AlbumDetails = () => {
           <div className="w-full md:w-1/3 bg-gray-200 rounded-lg overflow-hidden shadow-lg transform  transition-transform duration-500">
             {album.image && (
               <img
-                src={`${baseUrl}${album.image}`}
+                src={`${album.image}`}
                 alt={album.name}
                 className="w-full h-full object-cover"
               />
@@ -164,6 +165,7 @@ const AlbumDetails = () => {
             Songs in this Album
           </h2>
           <ul className="space-y-6">
+
             {songs.map((song) => (
               <li
                 key={song._id}
@@ -172,11 +174,16 @@ const AlbumDetails = () => {
                 {/* Song Cover Image */}
                 <div className="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0 shadow-lg">
                   <img
-                    src={`${baseUrl}${song.image}`}
+                    src={`${song.song.image}`}
                     alt={song.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
+
+                {
+                  console.log("Image URL:", song.song.audioUrl)
+
+                }
 
                 {/* Song Details */}
                 <div className="ml-6 flex-1">
@@ -188,13 +195,13 @@ const AlbumDetails = () => {
                 </div>
 
                 {/* Styled Audio Player */}
-                {song.audioUrl ? (
+                {song.song.audioUrl ? (
                   <div className="flex items-center ml-auto md:w-[400px]">
                     <div className="w-full md:w-[400px] p-2 rounded-xl ">
                       <audio
                         controls
                         className="w-full bg-transparent text-white focus:outline-none rounded-3xl"
-                        src={`${baseUrl}${song.audioUrl}`}
+                        src={`${song?.song?.audioUrl}`}
                       >
                         Your browser does not support the audio element.
                       </audio>

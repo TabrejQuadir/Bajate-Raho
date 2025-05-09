@@ -1,61 +1,111 @@
 const multer = require('multer');
 const path = require('path');
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("cloudinary").v2;
+require("dotenv").config();
 
-// Set up storage configuration for multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    if (file.fieldname === 'audioFile') {
-      cb(null, 'uploads/audio'); // Directory for audio files
-    } else if (file.fieldname === 'image') {
-      cb(null, 'uploads/images'); // Directory for image files
-    }
-  },
-  filename: function (req, file, cb) {
-    const fileName = Date.now() + path.extname(file.originalname); // Name the file based on the current timestamp
-    cb(null, fileName);
-  }
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Set up file filter for images and audio files
-const fileFilter = (req, file, cb) => {
-  const imageTypes = /jpeg|jpg|png|gif/; // Allowed image file types
-  const audioTypes = /audio\/(mp3|mpeg|wav|flac)/; // Allowed audio file types
+// ✅ Storage for images
+const imageStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'spotify_app/images',
+    resource_type: 'image',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
+    public_id: (req, file) => 'img_' + Date.now() + path.extname(file.originalname),
+  },
+});
 
-  console.log('File MIME Type:', file.mimetype);  // Log MIME type to check it
-  console.log('Audio file extension:', path.extname(file.originalname)); // Log the file extension
+// ✅ Storage for audio
+const audioStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'spotify_app/audio',
+    resource_type: 'video', // Cloudinary handles audio under 'video'
+    allowed_formats: ['mp3', 'wav', 'flac'],
+    public_id: (req, file) => 'audio_' + Date.now() + path.extname(file.originalname),
+  },
+});
 
-  if (file.fieldname === 'image') {
-    // Check if the file is an image
-    const extname = imageTypes.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = imageTypes.test(file.mimetype);
-    if (mimetype && extname) {
-      return cb(null, true); // Accept the image file
+// ✅ Combined storage that handles both image and audio
+const combinedStorage = {
+  _handleFile: (req, file, cb) => {
+    if (file.fieldname === 'image') {
+      imageStorage._handleFile(req, file, cb);
+    } else if (file.fieldname === 'audioFile') {
+      audioStorage._handleFile(req, file, cb);
     } else {
-      return cb('Error: Invalid image file type. Only images are allowed!');
+      cb(new Error('Invalid fieldname'));
     }
-  } else if (file.fieldname === 'audioFile') {
-    // Check if the file is an audio file
-    const extname = path.extname(file.originalname).toLowerCase();
-    const mimetype = file.mimetype;
-
-    // Ensure both extension and MIME type are valid
-    if (
-      (extname === '.mp3' && mimetype === 'audio/mpeg') ||
-      (extname === '.wav' && mimetype === 'audio/wav') ||
-      (extname === '.flac' && mimetype === 'audio/flac')
-    ) {
-      return cb(null, true); // Accept audio file
+  },
+  _removeFile: (req, file, cb) => {
+    if (file.fieldname === 'image') {
+      imageStorage._removeFile(req, file, cb);
+    } else if (file.fieldname === 'audioFile') {
+      audioStorage._removeFile(req, file, cb);
     } else {
-      return cb('Error: Invalid audio file type. Only audio files are allowed!');
+      cb(new Error('Invalid fieldname'));
     }
   }
 };
 
-// Configure multer to handle multiple files (image and audio)
-const upload = multer({
-  storage: storage,
+// ✅ File filter to validate MIME type & extension
+const fileFilter = (req, file, cb) => {
+  const extname = path.extname(file.originalname).toLowerCase();
+
+  if (file.fieldname === 'image') {
+    const imageTypes = /jpeg|jpg|png|gif/;
+    if (imageTypes.test(extname) && imageTypes.test(file.mimetype)) {
+      return cb(null, true);
+    } else {
+      return cb(new Error('Invalid image file type. Only images are allowed.'));
+    }
+  }
+
+  if (file.fieldname === 'audioFile') {
+    const allowedAudio = {
+      '.mp3': 'audio/mpeg',
+      '.wav': 'audio/wav',
+      '.flac': 'audio/flac',
+    };
+    if (allowedAudio[extname] && file.mimetype === allowedAudio[extname]) {
+      return cb(null, true);
+    } else {
+      return cb(new Error('Invalid audio file type. Only MP3, WAV, and FLAC are allowed.'));
+    }
+  }
+
+  return cb(new Error('Invalid fieldname.')); // catch-all
+};
+
+// ✅ Create uploaders
+const imageUpload = multer({
+  storage: imageStorage,
   fileFilter: fileFilter,
-  limits: { fileSize: 10 * 1024 * 1024 } // Limit file size to 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB max
 });
 
-module.exports = upload;
+const audioUpload = multer({
+  storage: audioStorage,
+  fileFilter: fileFilter,
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB max
+});
+
+const combinedUpload = multer({
+  storage: combinedStorage,
+  fileFilter: fileFilter,
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB max for audio files
+});
+
+// ✅ Export both for combined or individual use
+module.exports = {
+  imageUpload,
+  audioUpload,
+  combinedUpload
+};

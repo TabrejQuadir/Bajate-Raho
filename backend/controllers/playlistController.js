@@ -14,23 +14,30 @@ exports.createPlaylist = async (req, res) => {
             user: userId
         };
 
-        // If image was uploaded, add the image path
+        // If image was uploaded through Cloudinary, use its URL
         if (req.file) {
-            playlistData.image = `/uploads/images/${req.file.filename}`;
+            playlistData.image = req.file.path;
         }
 
         const playlist = new Playlist(playlistData);
         await playlist.save();
 
+        // Return populated playlist
+        const populatedPlaylist = await Playlist.findById(playlist._id)
+            .populate('songs', 'name artist duration audioUrl image')
+            .populate('user', 'username');
+
         res.status(201).json({
             success: true,
-            playlist
+            message: 'Playlist created successfully',
+            playlist: populatedPlaylist
         });
     } catch (error) {
         console.error('Error creating playlist:', error);
         res.status(500).json({
             success: false,
-            message: error.message || 'Error creating playlist'
+            message: 'Error creating playlist',
+            error: error.message
         });
     }
 };
@@ -51,7 +58,8 @@ exports.getUserPlaylists = async (req, res) => {
         console.error('Error fetching playlists:', error);
         res.status(500).json({
             success: false,
-            message: 'Error fetching playlists'
+            message: 'Error fetching playlists',
+            error: error.message
         });
     }
 };
@@ -78,7 +86,8 @@ exports.getPlaylist = async (req, res) => {
         console.error('Error fetching playlist:', error);
         res.status(500).json({
             success: false,
-            message: 'Error fetching playlist'
+            message: 'Error fetching playlist',
+            error: error.message
         });
     }
 };
@@ -128,7 +137,8 @@ exports.addSongToPlaylist = async (req, res) => {
         console.error('Error adding song to playlist:', error);
         res.status(500).json({
             success: false,
-            message: 'Error adding song to playlist'
+            message: 'Error adding song to playlist',
+            error: error.message
         });
     }
 };
@@ -161,7 +171,8 @@ exports.removeSongFromPlaylist = async (req, res) => {
         console.error('Error removing song from playlist:', error);
         res.status(500).json({
             success: false,
-            message: 'Error removing song from playlist'
+            message: 'Error removing song from playlist',
+            error: error.message
         });
     }
 };
@@ -189,7 +200,8 @@ exports.deletePlaylist = async (req, res) => {
         console.error('Error deleting playlist:', error);
         res.status(500).json({
             success: false,
-            message: 'Error deleting playlist'
+            message: 'Error deleting playlist',
+            error: error.message
         });
     }
 };
@@ -213,26 +225,29 @@ exports.updatePlaylist = async (req, res) => {
         if (name) playlist.name = name;
         if (description !== undefined) playlist.description = description;
 
-        // Handle image upload if a new image is provided
+        // Handle Cloudinary image upload if a new image is provided
         if (req.file) {
-            // If there's a new image, update the image path
-            playlist.image = '/uploads/images/' + req.file.filename;
+            playlist.image = req.file.path;
         }
 
         await playlist.save();
 
-        // Populate songs if needed
-        const updatedPlaylist = await Playlist.findById(playlist._id).populate('songs');
+        // Return populated playlist
+        const updatedPlaylist = await Playlist.findById(playlist._id)
+            .populate('songs', 'name artist duration audioUrl image')
+            .populate('user', 'username');
 
         res.status(200).json({
             success: true,
+            message: 'Playlist updated successfully',
             playlist: updatedPlaylist
         });
     } catch (error) {
         console.error('Error updating playlist:', error);
         res.status(500).json({
             success: false,
-            message: 'Error updating playlist'
+            message: 'Error updating playlist',
+            error: error.message
         });
     }
 };

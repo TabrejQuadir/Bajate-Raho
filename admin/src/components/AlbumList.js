@@ -19,10 +19,28 @@ const AlbumList = () => {
   }, []);
 
   // Helper function to format seconds to mm:ss
-  const formatDuration = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+  const formatDuration = (durationInSeconds) => {
+    const minutes = Math.floor(durationInSeconds / 60);
+    const seconds = durationInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
+  // Function to handle both number and mm:ss formats for song duration
+  const parseDuration = (duration) => {
+    // If the duration is in seconds (number format), use it directly
+    if (!isNaN(duration)) {
+      return parseFloat(duration);
+    }
+    
+    // If the duration is in mm:ss format, convert to seconds
+    const parts = duration.split(':');
+    if (parts.length === 2) {
+      const minutes = parseInt(parts[0], 10);
+      const seconds = parseInt(parts[1], 10);
+      return minutes * 60 + seconds;
+    }
+
+    return 0; // Return 0 if the format is invalid
   };
 
   return (
@@ -60,10 +78,11 @@ const AlbumList = () => {
           <tbody>
             {albums.map((album, index) => {
               // Calculate total duration of all songs in the album
-              const totalDuration = album.songs.reduce(
-                (acc, song) => acc + song.duration,
-                0
-              );
+              const totalDuration = album.songs.reduce((acc, song) => {
+                const songDuration = parseDuration(song.duration); // Parse the song duration
+                console.log("Duration for song:", songDuration); // Log the parsed duration
+                return acc + songDuration;
+              }, 0);
 
               return (
                 <tr
@@ -104,7 +123,7 @@ const AlbumList = () => {
 
                   {/* Total Duration */}
                   <td className="px-4 py-3 border-b border-gray-300 text-gray-600">
-                    {totalDuration > 0 ? formatDuration(totalDuration) : "0:00"}
+                    {formatDuration(totalDuration)}
                   </td>
 
                   {/* Actions */}

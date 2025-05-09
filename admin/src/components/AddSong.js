@@ -6,12 +6,13 @@ import Navbar from './Navbar';
 const AddSong = () => {
   const [name, setName] = useState('');
   const [artist, setArtist] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
   const [audioFile, setAudioFile] = useState(null);
   const [albumId, setAlbumId] = useState('');
   const [albums, setAlbums] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
   const [audioPreview, setAudioPreview] = useState(null);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const AddSong = () => {
         setAlbums(response.data); // Assuming the response contains an array of albums
       } catch (error) {
         console.error('Error fetching albums', error);
+        setError('Failed to fetch albums');
       }
     };
 
@@ -33,7 +35,7 @@ const AddSong = () => {
     setImage(file);
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImagePreview(reader.result); // Set the image preview
+      setImagePreview(reader.result);
     };
     if (file) reader.readAsDataURL(file);
   };
@@ -43,30 +45,43 @@ const AddSong = () => {
     setAudioFile(file);
     const reader = new FileReader();
     reader.onloadend = () => {
-      setAudioPreview(reader.result); // Set the audio preview (in this case, a URL)
+      setAudioPreview(reader.result);
     };
     if (file) reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(''); // Clear any previous errors
 
-    const formData = new FormData(); // To handle file uploads
+    // Validate files
+    if (!image || !audioFile) {
+      setError('Both image and audio files are required');
+      return;
+    }
+
+    const formData = new FormData();
     formData.append('name', name);
     formData.append('artist', artist);
     formData.append('image', image);
-    formData.append('audioFile', audioFile); // Append the audio file
-    formData.append('albumId', albumId);
+    formData.append('audioFile', audioFile);
+    if (albumId) formData.append('albumId', albumId);
 
     try {
       const response = await axios.post('http://localhost:5000/api/songs', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data', // Required for file uploads
+          'Content-Type': 'multipart/form-data',
         },
       });
-      navigate('/');
+      
+      if (response.data.success) {
+        navigate('/');
+      } else {
+        setError(response.data.message || 'Failed to create song');
+      }
     } catch (error) {
-      console.error('Error creating song', error);
+      console.error('Error creating song:', error);
+      setError(error.response?.data?.message || 'Error creating song');
     }
   };
 
@@ -75,6 +90,11 @@ const AddSong = () => {
       <Navbar />
       <div className="bg-white p-8 border border-teal-200 rounded-lg shadow-xl max-w-md mx-auto mt-20">
         <h2 className="text-3xl font-bold mb-6 text-green-400">Add Song</h2>
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+            {error}
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Song Name */}
           <div>
@@ -143,7 +163,6 @@ const AddSong = () => {
             <select
               value={albumId}
               onChange={(e) => setAlbumId(e.target.value)}
-              required
               className="w-full p-3 mt-1 bg-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value="">Select Album</option>

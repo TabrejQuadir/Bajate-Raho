@@ -93,7 +93,7 @@ const Home = () => {
                   <Link to={`/album/${album._id}`} className="w-full">
                     {album.image ? (
                       <img
-                        src={`${baseUrl}${album.image}`}
+                        src={`${album.image}`}
                         alt={album.name}
                         className="w-full h-36 sm:h-40 object-cover rounded mb-3"
                       />
