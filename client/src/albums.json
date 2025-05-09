@@ -1,0 +1,429 @@
+[
+    {
+        "category": "Featured Albums",
+        "albums": [
+            {
+                "id": 1,
+                "name": "Future Nostalgia",
+                "releaseDate": "2020-03-27",
+                "backgroundColor": "linear-gradient(to top, #1DB954, #1ED760)",
+                "songs": [
+                    {
+                        "name": "Don't Start Now",
+                        "duration": "3:03",
+                        "artist": "Dua Lipa",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"
+                    },
+                    {
+                        "name": "Physical",
+                        "duration": "3:14",
+                        "artist": "Dua Lipa",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3"
+                    },
+                    {
+                        "name": "Break My Heart",
+                        "duration": "3:41",
+                        "artist": "Dua Lipa",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "The Dark Side of the Moon",
+                "releaseDate": "1973-03-01",
+                "backgroundColor": "linear-gradient(to top, #232F3E, #4E5B6E)",
+                "songs": [
+                    {
+                        "name": "Speak to Me",
+                        "duration": "1:07",
+                        "artist": "Pink Floyd",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Breathe",
+                        "duration": "2:50",
+                        "artist": "Pink Floyd",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Time",
+                        "duration": "6:53",
+                        "artist": "Pink Floyd",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Abbey Road",
+                "releaseDate": "1969-09-26",
+                "backgroundColor": "linear-gradient(to top, #222222, #444444)",
+                "songs": [
+                    {
+                        "name": "Come Together",
+                        "duration": "4:20",
+                        "artist": "The Beatles",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Something",
+                        "duration": "3:03",
+                        "artist": "The Beatles",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Oh! Darling",
+                        "duration": "3:27",
+                        "artist": "The Beatles",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Lover",
+                "releaseDate": "2019-08-23",
+                "backgroundColor": "linear-gradient(to top, #F8B8D5, #FF84C3)",
+                "songs": [
+                    {
+                        "name": "Lover",
+                        "duration": "3:41",
+                        "artist": "Taylor Swift",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "The Man",
+                        "duration": "3:10",
+                        "artist": "Taylor Swift",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "You Need to Calm Down",
+                        "duration": "2:51",
+                        "artist": "Taylor Swift",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Rumors",
+                "releaseDate": "1977-02-04",
+                "backgroundColor": "linear-gradient(to top, #C3B091, #F4D54B)",
+                "songs": [
+                    {
+                        "name": "Dreams",
+                        "duration": "4:17",
+                        "artist": "Fleetwood Mac",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Go Your Own Way",
+                        "duration": "3:38",
+                        "artist": "Fleetwood Mac",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "The Chain",
+                        "duration": "4:30",
+                        "artist": "Fleetwood Mac",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Popular Now",
+        "albums": [
+            {
+                "id": 6,
+                "name": "1989",
+                "releaseDate": "2014-10-27",
+                "imageUrl": "https://picsum.photos/200?random=6",
+                "songs": [
+                    {
+                        "name": "Blank Space",
+                        "duration": "3:51",
+                        "artist": "Taylor Swift",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Style",
+                        "duration": "3:51",
+                        "artist": "Taylor Swift",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Shake It Off",
+                        "duration": "3:39",
+                        "artist": "Taylor Swift",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Views",
+                "releaseDate": "2016-04-29",
+                "imageUrl": "https://picsum.photos/200?random=7",
+                "songs": [
+                    {
+                        "name": "Hotline Bling",
+                        "duration": "4:27",
+                        "artist": "Drake",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "One Dance",
+                        "duration": "2:54",
+                        "artist": "Drake",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Controlla",
+                        "duration": "4:05",
+                        "artist": "Drake",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Blonde",
+                "releaseDate": "2016-08-20",
+                "imageUrl": "https://picsum.photos/200?random=8",
+                "songs": [
+                    {
+                        "name": "Nikes",
+                        "duration": "5:14",
+                        "artist": "Frank Ocean",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Ivy",
+                        "duration": "4:09",
+                        "artist": "Frank Ocean",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Pink + White",
+                        "duration": "3:04",
+                        "artist": "Frank Ocean",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "name": "After Hours",
+                "releaseDate": "2020-03-20",
+                "imageUrl": "https://picsum.photos/200?random=9",
+                "songs": [
+                    {
+                        "name": "Blinding Lights",
+                        "duration": "3:22",
+                        "artist": "The Weeknd",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "Save Your Tears",
+                        "duration": "3:35",
+                        "artist": "The Weeknd",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    },
+                    {
+                        "name": "In Your Eyes",
+                        "duration": "3:57",
+                        "artist": "The Weeknd",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        "audioUrl":"https://soundcloud.com/shaheryarahmed5/darasal-wapkinglive?in=tehreem-fatima-148779940/sets/bollywood-songs&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                    }
+                ]
+            },
+            {
+                "id": 10,
+                "name": "Good for You",
+                "releaseDate": "2021-05-21",
+                "imageUrl": "https://picsum.photos/200?random=10",
+                "songs": [
+                    {
+                        "name": "brutal",
+                        "duration": "2:24",
+                        "artist": "Olivia Rodrigo",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "traitor",
+                        "duration": "3:49",
+                        "artist": "Olivia Rodrigo",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "drivers license",
+                        "duration": "4:02",
+                        "artist": "Olivia Rodrigo",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }
+                ]
+            },
+            {
+                "id": 11,
+                "name": "Random Memories",
+                "releaseDate": "2013-05-17",
+                "imageUrl": "https://picsum.photos/200?random=11",
+                "songs": [
+                    {
+                        "name": "Give Life Back to Music",
+                        "duration": "4:34",
+                        "artist": "Daft Punk",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "Instant Crush",
+                        "duration": "5:37",
+                        "artist": "Daft Punk",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "Lose Yourself to Dance",
+                        "duration": "5:53",
+                        "artist": "Daft Punk",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "name": "25",
+                "releaseDate": "2015-11-20",
+                "imageUrl": "https://picsum.photos/200?random=12",
+                "songs": [
+                    {
+                        "name": "Hello",
+                        "duration": "4:55",
+                        "artist": "Adele",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "Send My Love",
+                        "duration": "3:43",
+                        "artist": "Adele",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "When We Were Young",
+                        "duration": "4:50",
+                        "artist": "Adele",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "To Pimp a Butterfly",
+                "releaseDate": "2015-03-15",
+                "imageUrl": "https://picsum.photos/200?random=13",
+                "songs": [
+                    {
+                        "name": "Wesley's Theory",
+                        "duration": "4:47",
+                        "artist": "Kendrick Lamar",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "King Kunta",
+                        "duration": "3:54",
+                        "artist": "Kendrick Lamar",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "These Walls",
+                        "duration": "5:00",
+                        "artist": "Kendrick Lamar",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }
+                ]
+            },
+            {
+                "id": 14,
+                "name": "In the Lonely Hour",
+                "releaseDate": "2014-05-26",
+                "imageUrl": "https://picsum.photos/200?random=14",
+                "songs": [
+                    {
+                        "name": "Stay With Me",
+                        "duration": "2:52",
+                        "artist": "Sam Smith",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "I'm Not the Only One",
+                        "duration": "3:59",
+                        "artist": "Sam Smith",
+                            "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "Like I Can",
+                        "duration": "2:47",
+                        "artist": "Sam Smith",
+                          "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }
+                ]
+            },
+            {
+                "id": 15,
+                "name": "DAMN.",
+                "releaseDate": "2017-04-14",
+                "imageUrl": "https://picsum.photos/200?random=15",
+                "songs": [
+                    {
+                        "name": "Purple Rain",
+                        "duration": "8:41",
+                        "artist": "Prince",
+                        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "Let's Go Crazy",
+                        "duration": "4:39",
+                        "artist": "Prince",
+                        "image": "https://images.unsplash.com/photo-1583604518057-6c31e12d4e30?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    },
+                    {
+                        "name": "When Doves Cry",
+                        "duration": "5:52",
+                        "artist": "Prince",
+                        "image": "https://images.unsplash.com/photo-1581190413988-89cbf448719f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }
+                ]
+            }
+        ]
+    }
+]

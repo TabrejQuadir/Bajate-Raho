@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2a2a2a; /* Spotify's green color */
+  border-radius: 10px; /* Rounded scrollbar edges */
+}
+
+/* Initial state when modal is closed (off-screen) */
+.modal-enter {
+  transform: translateY(100%); /* Modal starts off-screen at the bottom */
+  transition: transform 700ms ease-out;
+}
+
+/* Active state when modal is open (on-screen) */
+.modal-enter-active {
+  transform: translateY(0); /* Modal slides into its normal position */
+}
+
+/* Initial state when modal is closed (off-screen) */
+.card-enter {
+  transform: translateY(100%); /* Modal starts off-screen at the bottom */
+  transition: transform 1000ms ease-out;
+}
+
+/* Active state when modal is open (on-screen) */
+.card-enter-active {
+  transform: translateY(0); /* Modal slides into its normal position */
+}
+
+
